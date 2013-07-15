@@ -11,8 +11,10 @@ public class Main {
 	// write your code here
     }
 
-    private Boolean setupExperiment() {
+    private boolean setupExperiment() {
         udpReceiver = new UDPReceiver(PORT);
+        Thread t = new Thread(udpReceiver);
+        t.start();
 
         return true;
     }
