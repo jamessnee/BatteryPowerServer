@@ -5,7 +5,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
 
-public class UDPReceiver {
+public class UDPReceiver implements Runnable {
 
     private int port;
 
@@ -13,7 +13,8 @@ public class UDPReceiver {
         this.port = port;
     }
 
-    private void runServer() {
+    @Override
+    public void run() {
         DatagramSocket socket = null;
         try {
             socket = new DatagramSocket(port);
@@ -21,7 +22,7 @@ public class UDPReceiver {
             e.printStackTrace();
         }
 
-        DatagramPacket packet = new DatagramPacket(new byte[2], 2);
+        DatagramPacket packet = new DatagramPacket(new byte[3], 3);
 
         while(true) {
             try {
