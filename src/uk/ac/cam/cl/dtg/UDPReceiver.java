@@ -9,7 +9,7 @@ public class UDPReceiver implements Runnable {
 
     private int port;
 
-    public UDPReceiver(int port) {
+    public UDPReceiver(int port, Logger logger) {
         this.port = port;
     }
 

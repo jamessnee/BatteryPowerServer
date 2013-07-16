@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 public class Logger {
 
     private BufferedWriter writer;
+    protected synchronized BattPerReading;
 
     public Logger(BufferedWriter writer) {
         this.writer = writer;
