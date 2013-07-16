@@ -14,4 +14,9 @@ public class Logger {
         // Do something clever ^_^
     }
 
+    protected static void logDebug(String message){
+        if(Constants.DEBUG)
+            System.out.println(message);
+    }
+
 }
