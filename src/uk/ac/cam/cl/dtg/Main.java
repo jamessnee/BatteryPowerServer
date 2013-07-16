@@ -8,6 +8,7 @@ import java.io.IOException;
 public class Main {
 
     private static UDPReceiver udpReceiver;
+    private static PowerConsumptionReader powerConsumptionReader;
 
     public static void main(String[] args) {
         startExperiment();
@@ -25,10 +26,25 @@ public class Main {
             System.exit(1);
         }
 
-        udpReceiver = new UDPReceiver(Constants.PORT, logger);
+        /*
+        // UDPReceiver setup
+        udpReceiver = new UDPReceiver(Constants.BATT_PORT, logger);
         Thread t = new Thread(udpReceiver);
         Logger.logDebug("Starting UDPReceiver");
         t.start();
+        */
+
+        // PowerConsumptionReader setup
+        powerConsumptionReader = new PowerConsumptionReader(logger);
+        if(powerConsumptionReader.setupServerSocket()){
+            Thread pT = new Thread(powerConsumptionReader);
+            Logger.logDebug("Starting PowerConsumptionReader");
+            pT.start();
+        } else {
+            Logger.logDebug("There was an error setting up the server socket. Bailing out...");
+            System.exit(1);
+        }
+
         return true;
     }
 

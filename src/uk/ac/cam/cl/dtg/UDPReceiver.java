@@ -8,9 +8,11 @@ import java.net.SocketException;
 public class UDPReceiver implements Runnable {
 
     private int port;
+    private Logger logger;
 
     public UDPReceiver(int port, Logger logger) {
         this.port = port;
+        this.logger = logger;
     }
 
     @Override
@@ -44,5 +46,12 @@ public class UDPReceiver implements Runnable {
             Logger.logDebug("Part 1:"+packet.getData()[0]);
             Logger.logDebug("Part 2:"+packet.getData()[1]);
         }
+
+        short percentage = (short)packet.getData()[0];
+        long timestamp = System.currentTimeMillis();
+        BattPerReading reading = new BattPerReading();
+        reading.perReading = percentage;
+        reading.timestamp = timestamp;
+        logger.battPerReading = reading;
     }
 }
