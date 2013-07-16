@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.SocketException;
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 
 public class UDPReceiver implements Runnable {
 
@@ -45,13 +43,6 @@ public class UDPReceiver implements Runnable {
 
             Logger.logDebug("Part 1:"+packet.getData()[0]);
             Logger.logDebug("Part 2:"+packet.getData()[1]);
-//            ByteBuffer bb = ByteBuffer.allocate(2);
-//            bb.order(ByteOrder.LITTLE_ENDIAN);
-//            bb.put(packet.getData()[0]);
-//            bb.put(packet.getData()[1]);
-//            short battPercentage = bb.getShort();
-
-//            Logger.logDebug("Reported Percentage: "+battPercentage);
         }
     }
 }
