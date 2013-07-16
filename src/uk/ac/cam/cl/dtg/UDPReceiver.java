@@ -15,7 +15,7 @@ public class UDPReceiver implements Runnable {
 
     @Override
     public void run() {
-        Logger.logDebug("UDPReceviver Started");
+        Logger.logDebug("UDPReceiver Started");
         DatagramSocket socket = null;
         try {
             socket = new DatagramSocket(port);
