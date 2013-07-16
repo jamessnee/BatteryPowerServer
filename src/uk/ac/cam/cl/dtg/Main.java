@@ -2,22 +2,19 @@ package uk.ac.cam.cl.dtg;
 
 public class Main {
 
-    private final int PORT = 7000;
-
-    // iVars
-    private UDPReceiver udpReceiver;
+    private static UDPReceiver udpReceiver;
 
     public static void main(String[] args) {
-	// write your code here
+        startExperiment();
     }
 
-    private boolean setupExperiment() {
-        udpReceiver = new UDPReceiver(PORT);
+    private static boolean startExperiment() {
+        Logger.logDebug("Setting up...");
+        udpReceiver = new UDPReceiver(Constants.PORT);
         Thread t = new Thread(udpReceiver);
+        Logger.logDebug("Starting UDPReceiver");
         t.start();
-
         return true;
     }
-
 
 }
